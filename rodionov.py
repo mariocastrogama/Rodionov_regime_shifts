@@ -12,11 +12,12 @@ def rodionov_regimes(data, l, p):
 
     Rodionov, S. N. (2004). A sequential algorithm for testing climate regime shifts. 
     Geophysical Research Letters, 31(9).
-
+    https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2004GL019448
+    
     Args:
         data (array): Timeseries array of std values
         l (int): The assumed minimum regime length
-        p (float): The singificance probability to use when assessing shifts
+        p (float): The significance probability to use when assessing shifts
 
     Returns:
         list, list: Two lists: The regime-shift indices, the RSI values 
@@ -28,7 +29,7 @@ def rodionov_regimes(data, l, p):
     regime_shift_indices = []
     rsi = np.zeros(n)
 
-    # Step 2: Determine the difference diff for statistically significant mean values
+    # Step 2: Determine the difference 'diff' for statistically significant mean values
     t_stat = np.abs(t_test.ppf(p, (2*l-2)))
     avg_var = np.mean([np.var(data[i:(i+l)]) for i in range(n-l)])
     diff = t_stat * np.sqrt(2 * avg_var / l)
